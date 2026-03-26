@@ -1,25 +1,21 @@
 from preloaded import Node
 
-'''
-Node is defined in preloaded like this:
+# class Node(object):
+#     """Node class for reference"""
+#     def __init__(self, data, next=None):
+#         self.data = data
+#         self.next = next
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-'''
-    
-def push(head, data):
-    new_node = Node(data)
-    new_node.next = head
+def get_nth(node, index):
+    if node is None or index < 0:
+        raise Exception("Invalid index or empty list")
+    count = 0
+    current = node
 
-    return new_node
-
-def build_one_two_three():
-    head = None
-    
-    head = push(head, 3)
-    head = push(head, 2)
-    head = push(head, 1)
-    
-    return head
+    while current is not None:
+        if count == index:
+            return current
+        
+        current = current.next
+        count += 1
+    raise Exception("Index out of bounds")
